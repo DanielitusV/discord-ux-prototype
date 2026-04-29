@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord UX Prototype - Home</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/discord-layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="server-rail" aria-label="Servidores">
+      <button class="server-icon active" title="Inicio">UX</button>
+      <span class="rail-divider"></span>
+      <button class="server-icon image-like">IHC</button>
+      <button class="server-icon image-like green">JS</button>
+      <button class="server-icon image-like pink">DB</button>
+      <button class="server-icon add" data-open-modal="joinServerModal" title="Unirse a servidor">+</button>
+      <button class="server-icon compass" title="Explorar comunidades">⌕</button>
+    </aside>
+
+    <aside class="guild-sidebar">
+      <header class="guild-header">
+        <h1>UXploradores</h1>
+        <button class="icon-button">⌄</button>
+      </header>
+
+      <section class="quick-search-card">
+        <span class="mini-label">Mejora propuesta</span>
+        <h2>Buscar comunidades</h2>
+        <p>Encuentra servidores sin depender de enlaces externos.</p>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="serverSearch" type="text" placeholder="Buscar servidor o comunidad" />
+        </div>
+      </section>
+
+      <nav class="channel-list" aria-label="Canales">
+        <div class="channel-category">
+          <span>TEXT CHANNELS</span>
+          <button>+</button>
+        </div>
+        <a class="channel active" href="index.html"><span>#</span>inicio</a>
+        <a class="channel" href="pages/mensajes.html"><span>#</span>mensajes-directos</a>
+        <a class="channel" href="pages/notificaciones.html"><span>#</span>notificaciones</a>
+        <a class="channel" href="pages/verificacion.html"><span>#</span>verificacion</a>
+
+        <div class="channel-category voice-title">
+          <span>VOICE CHANNELS</span>
+          <button>+</button>
+        </div>
+        <a class="channel voice" href="pages/voz.html"><span>🔊</span>General</a>
+        <a class="channel voice" href="pages/voz.html"><span>🔊</span>Estudio IHC</a>
+      </nav>
+
+      <footer class="user-panel">
+        <div class="avatar small">D</div>
+        <div class="user-meta">
+          <strong>Danielitus</strong>
+          <span>En línea</span>
+        </div>
+        <button class="icon-button">🎙</button>
+        <button class="icon-button">⚙</button>
+      </footer>
+    </aside>
+
+    <section class="content-area">
+      <header class="top-bar">
+        <div class="channel-title"><span>#</span>inicio</div>
+        <p>Prototipo hardcodeado de mejoras UX</p>
+        <div class="top-actions">
+          <button class="icon-button">📌</button>
+          <button class="icon-button">👥</button>
+          <div class="top-search"><input placeholder="Buscar" /></div>
+          <button class="icon-button">?</button>
+        </div>
+      </header>
+
+      <div class="discord-home">
+        <section class="hero-panel">
+          <div>
+            <span class="badge">Fase 3 · Propuesta de mejora</span>
+            <h2>Bienvenido a UXploradores</h2>
+            <p>
+              Esta pantalla simula Discord escritorio ya iniciado. Todo el contenido está hardcodeado
+              y sirve como base para los escenarios de usabilidad del proyecto.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-open-modal="joinServerModal">Unirse a servidor</button>
+              <a class="secondary-btn" href="pages/mensajes.html">Probar mensajes</a>
+            </div>
+          </div>
+          <div class="status-card">
+            <span class="status-dot"></span>
+            <strong>Estado del prototipo</strong>
+            <p>Listo para integrar escenarios individuales.</p>
+          </div>
+        </section>
+
+        <section class="section-grid">
+          <article class="panel-card wide">
+            <div class="card-header">
+              <h3>Comunidades sugeridas</h3>
+              <span>Mejora: buscador visible</span>
+            </div>
+            <div id="serverList" class="server-list">
+              <div class="server-row" data-name="programacion ihc">
+                <div class="server-logo purple">IH</div>
+                <div><strong>Programación IHC</strong><span>Servidor para el trabajo de interacción humano-computadora.</span></div>
+                <button class="join-btn">Unirse</button>
+              </div>
+              <div class="server-row" data-name="uxploradores discord">
+                <div class="server-logo green">UX</div>
+                <div><strong>UXploradores</strong><span>Comunidad del equipo para coordinar la Fase 3.</span></div>
+                <button class="join-btn">Unirse</button>
+              </div>
+              <div class="server-row" data-name="diseño interfaces">
+                <div class="server-logo pink">DI</div>
+                <div><strong>Diseño de Interfaces</strong><span>Recursos, archivos y discusión de prototipos.</span></div>
+                <button class="join-btn">Unirse</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-header"><h3>Documentos</h3><span>Archivos del proyecto</span></div>
+            <div class="file-list">
+              <a class="file-item" href="docs/historias-usuario.md"><span>📄</span><div><strong>historias-usuario.md</strong><small>Pseudo historias y tareas</small></div></a>
+              <a class="file-item" href="README.md"><span>📘</span><div><strong>README.md</strong><small>Guía del repositorio</small></div></a>
+              <a class="file-item" href="pages/notificaciones.html"><span>🔔</span><div><strong>notificaciones.html</strong><small>Escenario 4</small></div></a>
+            </div>
+          </article>
+
+          <article class="panel-card">
+            <div class="card-header"><h3>Escenarios</h3><span>Flujos navegables</span></div>
+            <div class="scenario-list">
+              <a href="index.html">1. Unirse a servidor</a>
+              <a href="pages/mensajes.html">2. Mensajes directos</a>
+              <a href="pages/voz.html">3. Canal de voz</a>
+              <a href="pages/notificaciones.html">4. Notificaciones</a>
+              <a href="pages/verificacion.html">5. Verificación</a>
+            </div>
+          </article>
+        </section>
+      </div>
+    </section>
+
+    <aside class="members-panel">
+      <h3>ONLINE — 4</h3>
+      <div class="member"><div class="avatar tiny green-dot">F</div><span>Fernando</span></div>
+      <div class="member"><div class="avatar tiny green-dot">J</div><span>Jonas</span></div>
+      <div class="member"><div class="avatar tiny green-dot">M</div><span>Mairon</span></div>
+      <div class="member"><div class="avatar tiny green-dot">D</div><span>Daniel</span></div>
+      <h3>OFFLINE — 2</h3>
+      <div class="member muted"><div class="avatar tiny">B</div><span>Bot Verify</span></div>
+      <div class="member muted"><div class="avatar tiny">N</div><span>Notify Center</span></div>
+    </aside>
+  </main>
+
+  <div class="modal-backdrop hidden" id="joinServerModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal="joinServerModal">×</button>
+      <h2>Unirse a un servidor</h2>
+      <p>Busca una comunidad o ingresa un código de invitación. Esta mejora hace explícita la acción y reduce la ambigüedad del botón “+”.</p>
+      <div class="search-box large"><span>⌕</span><input placeholder="Ejemplo: Programación IHC" /></div>
+      <button class="primary-btn full" data-close-modal="joinServerModal">Confirmar unión</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
