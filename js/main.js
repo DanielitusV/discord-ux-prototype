@@ -124,3 +124,87 @@ if (document.readyState === 'loading') {
 } else {
   loadSavedServers();
 }
+
+function openSearchServers() {
+  const modal = document.getElementById('searchServersModal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.getElementById('searchInput').focus();
+  }
+}
+
+function closeSearchServers() {
+  const modal = document.getElementById('searchServersModal');
+  if (modal) {
+    modal.classList.add('hidden');
+  }
+}
+
+function filterServers() {
+  const input = document.getElementById('searchInput');
+  const query = input.value.toLowerCase().trim();
+  const list = document.getElementById('serversList');
+  const items = list.querySelectorAll('.server-item');
+
+  items.forEach(item => {
+    const name = item.textContent.toLowerCase();
+    item.style.display = name.includes(query) ? 'flex' : 'none';
+  });
+}
+
+function populateServersList() {
+  const list = document.getElementById('serversList');
+  const servers = getServers();
+
+  list.innerHTML = '';
+
+  if (servers.length === 0) {
+    list.innerHTML = '<div class="servers-empty">No hay servidores. ¡Crea uno con el +!</div>';
+    return;
+  }
+
+  servers.forEach(name => {
+    const item = document.createElement('div');
+    item.className = 'server-item';
+    item.innerHTML = `
+      <div class="server-item-icon">${name.charAt(0).toUpperCase()}</div>
+      <div class="server-item-name">${name}</div>
+    `;
+    item.onclick = () => {
+      const path = window.location.pathname;
+      const isInPages = path.includes('/pages/');
+      const url = isInPages 
+        ? `custom-server.html?name=${encodeURIComponent(name)}`
+        : `pages/custom-server.html?name=${encodeURIComponent(name)}`;
+      window.location.href = url;
+    };
+    list.appendChild(item);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchModal = document.getElementById('searchServersModal');
+  if (searchModal) {
+    populateServersList();
+    
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', filterServers);
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSearchServers();
+      });
+    }
+
+    searchModal.addEventListener('click', (e) => {
+      if (e.target === searchModal) closeSearchServers();
+    });
+  }
+
+  const compassBtn = document.querySelector('.compass');
+  if (compassBtn) {
+    compassBtn.onclick = (e) => {
+      e.stopPropagation();
+      openSearchServers();
+    };
+  }
+});
