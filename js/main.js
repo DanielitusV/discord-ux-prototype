@@ -89,8 +89,44 @@ function populateMobileServerMenu() {
     }
 
     link.href = server.href;
-    link.textContent = server.name;
+    link.innerHTML = `
+      <span class="mobile-server-link-icon" aria-hidden="true">${server.name.charAt(0).toUpperCase()}</span>
+      <span class="mobile-server-link-name">${server.name}</span>
+    `;
     list.appendChild(link);
+  });
+
+  const actions = [
+    {
+      label: 'Crear servidor',
+      icon: '+',
+      className: 'mobile-server-link mobile-server-link-action',
+      onClick: () => {
+        closeMobileServerMenu();
+        document.getElementById('createServerModal')?.classList.remove('hidden');
+      },
+    },
+    {
+      label: 'Buscar servidores',
+      icon: '⌕',
+      className: 'mobile-server-link mobile-server-link-action',
+      onClick: () => {
+        closeMobileServerMenu();
+        openSearchServers();
+      },
+    },
+  ];
+
+  actions.forEach((action) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = action.className;
+    button.innerHTML = `
+      <span class="mobile-server-link-icon mobile-server-link-icon-action" aria-hidden="true">${action.icon}</span>
+      <span class="mobile-server-link-name">${action.label}</span>
+    `;
+    button.addEventListener('click', action.onClick);
+    list.appendChild(button);
   });
 }
 
