@@ -37,7 +37,7 @@ Su objetivo es representar flujos de interacción mejorados para pruebas con usu
 - Falta de feedback inmediato
 - Accesos accidentales
 - Configuraciones dispersas
-- Verificación poco lcara
+- Verificación poco clara
 
 ## Propuestas de mejora
 - Buscador claro para unirse a servidores

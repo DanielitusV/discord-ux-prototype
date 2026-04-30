@@ -55,6 +55,29 @@
   color: #fff;
 }
 
+.server-icon.home-icon {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.2s ease;
+}
+
+.server-icon.home-icon:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.server-icon.home-icon.active {
+  background: #23a55a;
+  color: #fff;
+  border: 1px solid #23a55a;
+  box-shadow: 0 0 12px rgba(35, 165, 90, 0.35);
+}
+
 .rail-divider {
   width: 32px;
   height: 2px;
@@ -82,7 +105,7 @@
 .guild-header h1 {
   font-size: 15px;
   margin: 0;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .icon-button {
@@ -126,6 +149,7 @@
   border-radius: 8px;
   margin: 1px 0;
   font-size: 15px;
+  font-weight: 400;
   transition: 0.16s;
   cursor: pointer;
   background: transparent;
