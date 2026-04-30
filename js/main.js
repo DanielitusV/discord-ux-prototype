@@ -183,6 +183,7 @@ function createServerButton(name) {
   const button = document.createElement('button');
   button.className = 'server-icon custom-server';
   button.setAttribute('aria-label', name);
+  button.dataset.tooltip = name;
   button.textContent = name.charAt(0).toUpperCase();
   button.onclick = (e) => {
     e.stopPropagation();
@@ -204,7 +205,7 @@ function deleteServer(name) {
   const rail = document.querySelector('.server-rail');
   const buttons = Array.from(rail.querySelectorAll('.custom-server'));
   buttons.forEach(btn => {
-    if (btn.title === name) btn.remove();
+    if ((btn.dataset.tooltip || btn.getAttribute('aria-label') || '').trim() === name) btn.remove();
   });
 }
 
@@ -216,7 +217,7 @@ function addServerToRail(name) {
   if (!addBtn) return;
 
   const existingButtons = Array.from(serverRail.querySelectorAll('.custom-server'));
-  if (existingButtons.some(btn => btn.title === name)) {
+  if (existingButtons.some(btn => (btn.dataset.tooltip || btn.getAttribute('aria-label') || '').trim() === name)) {
     return;
   }
 
@@ -261,6 +262,38 @@ if (document.readyState === 'loading') {
 } else {
   loadSavedServers();
 }
+
+function decorateServerRailTooltips() {
+  document.querySelectorAll('.server-rail .server-icon').forEach((button) => {
+    if (button.classList.contains('custom-server')) {
+      if (!button.dataset.tooltip) {
+        button.dataset.tooltip = button.getAttribute('aria-label') || button.textContent.trim();
+      }
+      return;
+    }
+
+    if (button.classList.contains('home-icon')) {
+      button.dataset.tooltip = button.getAttribute('aria-label') || 'Mensajes directos';
+      return;
+    }
+
+    if (button.classList.contains('ux-server')) {
+      button.dataset.tooltip = button.getAttribute('aria-label') || 'UXploradores';
+      return;
+    }
+
+    if (button.classList.contains('add')) {
+      button.dataset.tooltip = 'Crear servidor';
+      return;
+    }
+
+    if (button.classList.contains('compass')) {
+      button.dataset.tooltip = 'Buscar servidor';
+    }
+  });
+}
+
+decorateServerRailTooltips();
 
 function openSearchServers() {
   const modal = document.getElementById('searchServersModal');
