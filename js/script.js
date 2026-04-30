@@ -503,3 +503,24 @@ function mostrarToast(mensaje) {
   cargarEstado();
   pintarUI();
 })();
+/*Escenario 5 — Verificación de usuario*/
+   
+(function escenarioVerificacion() {
+  const pantalla1 = document.getElementById('pantalla1');
+  const pantalla2 = document.getElementById('pantalla2');
+  const btnAcepto = document.getElementById('btnAcepto');
+
+  // Si no estamos en verificacion.html, salimos sin hacer nada
+  if (!pantalla1 || !pantalla2 || !btnAcepto) return;
+
+  btnAcepto.addEventListener('click', function () {
+    // Ocultar Pantalla 1
+    pantalla1.classList.add('hidden');
+
+    // Mostrar Pantalla 2
+    pantalla2.classList.remove('hidden');
+
+    // Toast de confirmación
+    mostrarToast('✓ ¡Verificación completada! Bienvenido/a al servidor.');
+  });
+})();
