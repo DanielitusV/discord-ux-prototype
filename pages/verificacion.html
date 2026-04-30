@@ -3,17 +3,197 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Escenario: verificacion</title>
+  <title>Verificación — UXploradores</title>
   <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/discord-layout.css" />
   <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .verificacion-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 56px);
+      padding: 32px 16px;
+    }
+    .verificacion-card {
+      background: var(--bg-600, #2b2d31);
+      border: 1px solid var(--border, rgba(255,255,255,.06));
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.45);
+      width: 100%;
+      max-width: 560px;
+      padding: 36px 40px 40px;
+      animation: fadeSlideIn .28s ease;
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* Pantalla 1 */
+    #pantalla1 .step-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(88,101,242,.22);
+      color: #7289da;
+      border: 1px solid rgba(88,101,242,.35);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 18px;
+    }
+    #pantalla1 h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px;
+      color: var(--text, #f2f3f5);
+    }
+    #pantalla1 .subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted, #949ba4);
+      margin: 0 0 24px;
+      line-height: 1.55;
+    }
+    .rules-box {
+      background: var(--bg-900, #1e1f22);
+      border: 1px solid var(--border, rgba(255,255,255,.06));
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .rule-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .rule-icon {
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      border-radius: 50%;
+      background: rgba(88,101,242,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+    .rule-text strong {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text, #f2f3f5);
+      margin-bottom: 2px;
+    }
+    .rule-text span {
+      font-size: 12.5px;
+      color: var(--text-muted, #949ba4);
+      line-height: 1.5;
+    }
+    .rules-divider {
+      height: 1px;
+      background: var(--border, rgba(255,255,255,.06));
+      margin: 2px 0;
+    }
+    #btnAcepto {
+      width: 100%;
+      padding: 13px;
+      background: #5865f2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+      letter-spacing: .02em;
+    }
+    #btnAcepto:hover  { background: #4752c4; }
+    #btnAcepto:active { transform: scale(.98); }
+    .accept-note {
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--text-muted, #949ba4);
+      margin-top: 12px;
+    }
+    /* Pantalla 2 */
+    #pantalla2 { text-align: center; }
+    .success-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3ba55d, #2d7d46);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 24px;
+      box-shadow: 0 0 0 12px rgba(59,165,93,.15);
+      animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    #pantalla2 h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 10px;
+      color: var(--text, #f2f3f5);
+    }
+    #pantalla2 .success-desc {
+      font-size: 14px;
+      color: var(--text-muted, #949ba4);
+      line-height: 1.6;
+      max-width: 380px;
+      margin: 0 auto 28px;
+    }
+    .chips-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(59,165,93,.14);
+      border: 1px solid rgba(59,165,93,.3);
+      color: #3ba55d;
+      border-radius: 999px;
+      padding: 5px 13px;
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+    #btnAcceder {
+      display: inline-block;
+      padding: 12px 32px;
+      background: #5865f2;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    #btnAcceder:hover { background: #4752c4; }
+    .hidden { display: none !important; }
+  </style>
 </head>
 <body>
   <main class="app-shell">
+
     <aside class="server-rail">
-      <button class="server-icon home-icon" onclick="window.location.href='../index.html'" aria-label="Mensajes directos">
-        INICIO
-      </button>
+      <button class="server-icon home-icon" onclick="window.location.href='../index.html'" aria-label="Mensajes directos">INICIO</button>
       <span class="rail-divider"></span>
       <button class="server-icon ux-server active" aria-label="Servidor UXploradores">UX</button>
       <button class="server-icon add" data-open-modal="createServerModal" aria-label="Crear servidor">+</button>
@@ -21,10 +201,7 @@
     </aside>
 
     <aside class="guild-sidebar">
-      <header class="guild-header">
-        <h1>UXploradores</h1>
-      </header>
-
+      <header class="guild-header"><h1>UXploradores</h1></header>
       <nav class="channel-list">
         <div class="channel-group">
           <h4>TEXT CHANNELS</h4>
@@ -33,13 +210,11 @@
           <a class="channel" href="notificaciones.html"><span>#</span>notificaciones</a>
           <a class="channel" href="mensajes.html"><span>#</span>mensajes</a>
         </div>
-        
         <div class="channel-group">
           <h4>VOICE CHANNELS</h4>
           <a class="channel" href="voz.html"><span>🔊</span>General</a>
         </div>
       </nav>
-
       <footer class="user-panel">
         <div class="avatar small online">D</div>
         <div class="user-meta">
@@ -58,36 +233,81 @@
         </div>
       </header>
 
-      <div class="discord-home">
-        <section class="hero-panel">
-          <div>
-            <span class="badge">Escenario</span>
-            <h2>verificacion</h2>
-            <p>Vista placeholder para que el integrante encargado implemente este flujo usando los estilos reutilizables.</p>
-            <a class="secondary-btn" href="server-ux.html">Volver</a>
+      <div class="verificacion-wrapper">
+
+        <!-- PANTALLA 1: Leer reglas -->
+        <div class="verificacion-card" id="pantalla1">
+          <span class="step-label">✦ Paso 1 de 1</span>
+          <h2>Leer reglas del servidor</h2>
+          <p class="subtitle">
+            Antes de acceder a <strong>UXploradores</strong>, lee y acepta las
+            normas de la comunidad. ¡Son rápidas y sencillas!
+          </p>
+
+          <div class="rules-box" role="list" aria-label="Reglas del servidor">
+            <div class="rule-item" role="listitem">
+              <div class="rule-icon">🤝</div>
+              <div class="rule-text">
+                <strong>Respeto mutuo</strong>
+                <span>Trata a todos con amabilidad. No se toleran insultos, discriminación ni acoso de ningún tipo.</span>
+              </div>
+            </div>
+            <div class="rules-divider"></div>
+            <div class="rule-item" role="listitem">
+              <div class="rule-icon">💬</div>
+              <div class="rule-text">
+                <strong>Canales correctos</strong>
+                <span>Publica cada mensaje en el canal que corresponde. Ayuda a mantener el servidor organizado.</span>
+              </div>
+            </div>
+            <div class="rules-divider"></div>
+            <div class="rule-item" role="listitem">
+              <div class="rule-icon">🚫</div>
+              <div class="rule-text">
+                <strong>Sin spam ni autopromoción</strong>
+                <span>No envíes mensajes repetidos, publicidad ni enlaces externos sin permiso de un moderador.</span>
+              </div>
+            </div>
+            <div class="rules-divider"></div>
+            <div class="rule-item" role="listitem">
+              <div class="rule-icon">🔒</div>
+              <div class="rule-text">
+                <strong>Privacidad</strong>
+                <span>No compartas información personal de otros miembros sin su consentimiento explícito.</span>
+              </div>
+            </div>
           </div>
-        </section>
+
+          <button id="btnAcepto" aria-label="Aceptar las reglas y verificarme">
+            ✓ &nbsp;Acepto las reglas
+          </button>
+          <p class="accept-note">Al hacer clic confirmas que leíste y aceptas todas las normas anteriores.</p>
+        </div>
+
+        <!-- PANTALLA 2: Verificación completada (oculta inicialmente) -->
+        <div class="verificacion-card hidden" id="pantalla2" aria-live="polite">
+          <div class="success-circle" role="img" aria-label="Éxito">✓</div>
+          <h2>¡Verificación completada!</h2>
+          <p class="success-desc">
+            Has aceptado las reglas de <strong>UXploradores</strong>. Ya tienes
+            acceso completo al servidor. ¡Bienvenido/a a la comunidad!
+          </p>
+          <div class="chips-row">
+            <span class="chip">✔ Reglas aceptadas</span>
+            <span class="chip">✔ Acceso concedido</span>
+          </div>
+          <a class="btn" id="btnAcceder" href="server-ux.html">Ir al servidor →</a>
+        </div>
+
       </div>
     </section>
 
     <aside class="members-panel">
       <h3>ONLINE — 4</h3>
-      <div class="member">
-        <div class="avatar tiny online">L</div>
-        <span>Luis Fernando</span>
-      </div>
-      <div class="member">
-        <div class="avatar tiny online">J</div>
-        <span>Jonas</span>
-      </div>
-      <div class="member">
-        <div class="avatar tiny idle">M</div>
-        <span>Mairon Henry</span>
-      </div>
-      <div class="member">
-        <div class="avatar tiny green-dot">D</div>
-        <span>Danielitus</span>
-      </div>
+      <div class="member"><div class="avatar tiny online">L</div><span>Luis Fernando</span></div>
+      <div class="member"><div class="avatar tiny online">J</div><span>Jonas</span></div>
+      <div class="member"><div class="avatar tiny idle">M</div><span>Mairon Henry</span></div>
+      <div class="member"><div class="avatar tiny green-dot">D</div><span>Danielitus</span></div>
     </aside>
   </main>
 
@@ -103,8 +323,6 @@
     </div>
   </div>
 
-  <script src="../js/main.js"></script>
-
   <div class="search-servers hidden" id="searchServersModal">
     <div class="search-servers-card">
       <h2>Buscar Servidores</h2>
@@ -112,5 +330,8 @@
       <div class="servers-list" id="serversList"></div>
     </div>
   </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>
