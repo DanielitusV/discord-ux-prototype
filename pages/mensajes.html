@@ -71,27 +71,60 @@
           </div>
         </div>
 
+        <div class="typing-indicator hidden" id="typingIndicator">
+          <div class="avatar tiny online">L</div>
+          <div class="typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="typing-label">Luis Fernando está escribiendo…</span>
+        </div>
+
         <div class="messages-scroll" id="messagesScroll">
 
-          <div class="bubble-row theirs">
+          <div class="date-separator"><span>Ayer</span></div>
+
+          <div class="bubble-row theirs" data-author="Luis" data-time="1200">
             <div class="avatar tiny online">L</div>
-            <div>
-              <div class="bubble">Hola! cómo vas con el prototipo?</div>
+            <div class="bubble-group">
+              <span class="bubble-author">Luis Fernando</span>
+              <div class="bubble-wrap">
+                <div class="bubble">Hola! cómo vas con el prototipo?</div>
+                <div class="msg-actions theirs-actions">
+                  <button class="msg-action-btn" data-action="react" title="Reaccionar">😊</button>
+                  <button class="msg-action-btn" data-action="reply" title="Responder">↩</button>
+                </div>
+              </div>
               <div class="bubble-meta">12:30</div>
             </div>
           </div>
 
-          <div class="bubble-row theirs">
-            <div class="avatar tiny online">L</div>
-            <div>
-              <div class="bubble">Ya terminaste el escenario de mensajes?</div>
+          <div class="bubble-row theirs grouped" data-author="Luis" data-time="1201">
+            <div class="avatar-placeholder"></div>
+            <div class="bubble-group">
+              <div class="bubble-wrap">
+                <div class="bubble">Ya terminaste el escenario de mensajes?</div>
+                <div class="msg-actions theirs-actions">
+                  <button class="msg-action-btn" data-action="react" title="Reaccionar">😊</button>
+                  <button class="msg-action-btn" data-action="reply" title="Responder">↩</button>
+                </div>
+              </div>
               <div class="bubble-meta">12:31</div>
             </div>
           </div>
 
-          <div class="bubble-row mine">
-            <div>
-              <div class="bubble">Casi! estoy implementando los indicadores ahora</div>
+          <div class="date-separator"><span>Hoy</span></div>
+
+          <div class="bubble-row mine" data-author="me" data-time="1232" id="msg-1">
+            <div class="bubble-group">
+              <div class="bubble-wrap">
+                <div class="msg-actions mine-actions">
+                  <button class="msg-action-btn" data-action="react" title="Reaccionar">😊</button>
+                  <button class="msg-action-btn" data-action="reply" title="Responder">↩</button>
+                  <button class="msg-action-btn" data-action="edit" title="Editar">✏️</button>
+                  <button class="msg-action-btn" data-action="delete" title="Eliminar">🗑️</button>
+                </div>
+                <div class="bubble">Casi! estoy implementando los indicadores ahora</div>
+              </div>
               <div class="bubble-meta">
                 12:32
                 <span class="read-indicator sent">✔ Enviado</span>
@@ -99,9 +132,17 @@
             </div>
           </div>
 
-          <div class="bubble-row mine" id="lastMessageRow">
-            <div>
-              <div class="bubble">Ya casi termino, dame unos minutos 😅</div>
+          <div class="bubble-row mine grouped" data-author="me" data-time="1233" id="lastMessageRow">
+            <div class="bubble-group">
+              <div class="bubble-wrap">
+                <div class="msg-actions mine-actions">
+                  <button class="msg-action-btn" data-action="react" title="Reaccionar">😊</button>
+                  <button class="msg-action-btn" data-action="reply" title="Responder">↩</button>
+                  <button class="msg-action-btn" data-action="edit" title="Editar">✏️</button>
+                  <button class="msg-action-btn" data-action="delete" title="Eliminar">🗑️</button>
+                </div>
+                <div class="bubble">Ya casi termino, dame unos minutos 😅</div>
+              </div>
               <div class="bubble-meta">
                 12:33
                 <span class="read-indicator sent" id="readIndicator">✔ Enviado</span>
@@ -109,6 +150,14 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="reply-bar hidden" id="replyBar">
+          <div class="reply-preview">
+            <span class="reply-author"></span>
+            <span class="reply-text"></span>
+          </div>
+          <button class="reply-close" id="replyClose">×</button>
         </div>
 
         <div class="message-input-area">
@@ -152,6 +201,26 @@
         <button class="btn-cancel" id="cancelExit">Cancelar</button>
       </div>
     </div>
+  </div>
+
+  <div class="exit-modal-backdrop" id="deleteModal">
+    <div class="exit-modal-card">
+      <h3>🗑️ Eliminar mensaje</h3>
+      <p>¿Seguro que quieres eliminar este mensaje? Esta acción no se puede deshacer.</p>
+      <div class="exit-modal-actions">
+        <button class="btn-exit" id="confirmDelete">Eliminar</button>
+        <button class="btn-cancel" id="cancelDelete">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="emoji-picker hidden" id="emojiPicker">
+    <button class="emoji-opt" data-emoji="👍">👍</button>
+    <button class="emoji-opt" data-emoji="❤️">❤️</button>
+    <button class="emoji-opt" data-emoji="😂">😂</button>
+    <button class="emoji-opt" data-emoji="😮">😮</button>
+    <button class="emoji-opt" data-emoji="😢">😢</button>
+    <button class="emoji-opt" data-emoji="🔥">🔥</button>
   </div>
 
   <div class="modal-backdrop hidden" id="createServerModal">
