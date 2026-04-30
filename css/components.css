@@ -230,12 +230,12 @@
 .server-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
   padding: 12px;
   background: var(--bg-700);
   border-radius: 10px;
   margin-bottom: 8px;
-  cursor: pointer;
   transition: 0.16s;
 }
 
@@ -257,6 +257,26 @@
 .server-item-name {
   flex: 1;
   color: var(--text);
+}
+
+.server-join-btn {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.16s;
+}
+
+.server-join-btn:hover {
+  background: #4c52c4;
+}
+
+.server-join-btn:active {
+  transform: scale(0.98);
 }
 
 .servers-empty {

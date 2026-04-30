@@ -34,6 +34,27 @@ function getServers() {
   return stored ? JSON.parse(stored) : [];
 }
 
+function getAvailableServers() {
+  return [
+    'Ingenieria',
+    'Programacion',
+    'Diseño UX/UI',
+    'Gaming Central',
+    'Música y Arte',
+    'Deportes',
+    'Películas',
+    'Tecnología',
+    'Viajes',
+    'Cocina'
+  ];
+}
+
+function getJoinableServers() {
+  const myServers = getServers();
+  const available = getAvailableServers();
+  return available.filter(server => !myServers.includes(server));
+}
+
 function saveServers(servers) {
   localStorage.setItem('customServers', JSON.stringify(servers));
 }
@@ -144,33 +165,53 @@ function filterServers() {
   const input = document.getElementById('searchInput');
   const query = input.value.toLowerCase().trim();
   const list = document.getElementById('serversList');
-  const items = list.querySelectorAll('.server-item');
-
-  items.forEach(item => {
-    const name = item.textContent.toLowerCase();
-    item.style.display = name.includes(query) ? 'flex' : 'none';
-  });
-}
-
-function populateServersList() {
-  const list = document.getElementById('serversList');
-  const servers = getServers();
 
   list.innerHTML = '';
 
-  if (servers.length === 0) {
-    list.innerHTML = '<div class="servers-empty">No hay servidores. ¡Crea uno con el +!</div>';
+  if (!query) {
+    list.innerHTML = '<div class="servers-empty">Escribe para buscar servidores...</div>';
     return;
   }
 
-  servers.forEach(name => {
+  const myServers = getServers();
+  const available = getAvailableServers();
+  
+  // Combinar servidores públicos con los del usuario
+  const allServers = [...new Set([...available, ...myServers])];
+  
+  // Filtrar por la búsqueda
+  const filtered = allServers.filter(name => 
+    name.toLowerCase().includes(query)
+  );
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<div class="servers-empty">No encontramos servidores que coincidan con tu búsqueda.</div>';
+    return;
+  }
+
+  filtered.forEach(name => {
+    const isJoined = myServers.includes(name);
     const item = document.createElement('div');
     item.className = 'server-item';
     item.innerHTML = `
       <div class="server-item-icon">${name.charAt(0).toUpperCase()}</div>
       <div class="server-item-name">${name}</div>
+      <button class="server-join-btn" onclick="event.stopPropagation()">${isJoined ? 'Abrir' : 'Unirse'}</button>
     `;
-    item.onclick = () => {
+    
+    const btn = item.querySelector('.server-join-btn');
+    btn.onclick = () => {
+      // Si no está unido, agregarlo a localStorage
+      if (!isJoined) {
+        const servers = getServers();
+        if (!servers.includes(name)) {
+          servers.push(name);
+          saveServers(servers);
+          addServerToRail(name);
+        }
+      }
+      
+      // Navegar al servidor
       const path = window.location.pathname;
       const isInPages = path.includes('/pages/');
       const url = isInPages 
@@ -178,8 +219,14 @@ function populateServersList() {
         : `pages/custom-server.html?name=${encodeURIComponent(name)}`;
       window.location.href = url;
     };
+    
     list.appendChild(item);
   });
+}
+
+function populateServersList() {
+  const list = document.getElementById('serversList');
+  list.innerHTML = '<div class="servers-empty">Escribe para buscar servidores...</div>';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
