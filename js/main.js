@@ -50,11 +50,16 @@ function addServerToRail(name) {
   const serverRail = document.querySelector('.server-rail');
   if (!serverRail) return;
 
-  const button = createServerButton(name);
   const addBtn = serverRail.querySelector('.add');
-  if (addBtn) {
-    addBtn.parentNode.insertBefore(button, addBtn);
+  if (!addBtn) return;
+
+  const existingButtons = Array.from(serverRail.querySelectorAll('.custom-server'));
+  if (existingButtons.some(btn => btn.title === name)) {
+    return;
   }
+
+  const button = createServerButton(name);
+  addBtn.parentNode.insertBefore(button, addBtn);
 }
 
 function loadSavedServers() {
@@ -93,5 +98,8 @@ function createServer() {
   console.log('✓ Servidor creado:', serverName);
 }
 
-// Cargar servidores guardados al iniciar
-document.addEventListener('DOMContentLoaded', loadSavedServers);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadSavedServers);
+} else {
+  loadSavedServers();
+}
