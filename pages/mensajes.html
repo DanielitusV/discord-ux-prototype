@@ -7,11 +7,12 @@
   <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/discord-layout.css" />
   <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/mensajes.css" />
 </head>
 <body>
   <main class="app-shell">
     <aside class="server-rail">
-      <button class="server-icon home-icon" onclick="window.location.href='../index.html'" aria-label="Mensajes directos">
+      <button class="server-icon home-icon" onclick="safeNavigate('../index.html')" aria-label="Mensajes directos">
         INICIO
       </button>
       <span class="rail-divider"></span>
@@ -33,7 +34,6 @@
           <a class="channel" href="notificaciones.html"><span>#</span>notificaciones</a>
           <a class="channel active" href="mensajes.html"><span>#</span>mensajes</a>
         </div>
-        
         <div class="channel-group">
           <h4>VOICE CHANNELS</h4>
           <a class="channel" href="voz.html"><span>🔊</span>General</a>
@@ -49,7 +49,7 @@
       </footer>
     </aside>
 
-    <section class="content-area">
+    <section class="content-area chat-mode" style="display:flex; flex-direction:column; padding:0; overflow:hidden;">
       <header class="top-bar">
         <div class="channel-title"><span>#</span>mensajes</div>
         <div class="top-actions">
@@ -58,15 +58,67 @@
         </div>
       </header>
 
-      <div class="discord-home">
-        <section class="hero-panel">
-          <div>
-            <span class="badge">Escenario</span>
-            <h2>mensajes</h2>
-            <p>Vista placeholder para que el integrante encargado implemente este flujo usando los estilos reutilizables.</p>
-            <a class="secondary-btn" href="server-ux.html">Volver</a>
+      <div class="chat-wrapper">
+
+        <div class="chat-contact-bar">
+          <div class="avatar small online" id="contactAvatar">L</div>
+          <div class="contact-info">
+            <strong>Luis Fernando</strong>
+            <div class="contact-status">
+              <span class="status-dot online" id="statusDot"></span>
+              <span id="statusText">En línea</span>
+            </div>
           </div>
-        </section>
+        </div>
+
+        <div class="messages-scroll" id="messagesScroll">
+
+          <div class="bubble-row theirs">
+            <div class="avatar tiny online">L</div>
+            <div>
+              <div class="bubble">Hola! cómo vas con el prototipo?</div>
+              <div class="bubble-meta">12:30</div>
+            </div>
+          </div>
+
+          <div class="bubble-row theirs">
+            <div class="avatar tiny online">L</div>
+            <div>
+              <div class="bubble">Ya terminaste el escenario de mensajes?</div>
+              <div class="bubble-meta">12:31</div>
+            </div>
+          </div>
+
+          <div class="bubble-row mine">
+            <div>
+              <div class="bubble">Casi! estoy implementando los indicadores ahora</div>
+              <div class="bubble-meta">
+                12:32
+                <span class="read-indicator sent">✔ Enviado</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bubble-row mine" id="lastMessageRow">
+            <div>
+              <div class="bubble">Ya casi termino, dame unos minutos 😅</div>
+              <div class="bubble-meta">
+                12:33
+                <span class="read-indicator sent" id="readIndicator">✔ Enviado</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="message-input-area">
+          <textarea
+            id="messageInput"
+            rows="1"
+            placeholder="Escribe un mensaje..."
+          ></textarea>
+          <button class="send-btn" id="sendBtn">➤</button>
+        </div>
       </div>
     </section>
 
@@ -91,6 +143,17 @@
     </aside>
   </main>
 
+  <div class="exit-modal-backdrop" id="exitModal">
+    <div class="exit-modal-card">
+      <h3>⚠️ Mensaje sin enviar</h3>
+      <p>Tienes un mensaje sin enviar. ¿Deseas salir de todas formas?</p>
+      <div class="exit-modal-actions">
+        <button class="btn-exit" id="confirmExit">Salir</button>
+        <button class="btn-cancel" id="cancelExit">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-backdrop hidden" id="createServerModal">
     <div class="modal-card">
       <button class="modal-close" data-close-modal="createServerModal">×</button>
@@ -103,8 +166,6 @@
     </div>
   </div>
 
-  <script src="../js/main.js"></script>
-
   <div class="search-servers hidden" id="searchServersModal">
     <div class="search-servers-card">
       <h2>Buscar Servidores</h2>
@@ -112,5 +173,8 @@
       <div class="servers-list" id="serversList"></div>
     </div>
   </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/mensajes.js"></script>
 </body>
 </html>
