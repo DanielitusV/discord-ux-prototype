@@ -45,7 +45,8 @@ function getAvailableServers() {
     'Películas',
     'Tecnología',
     'Viajes',
-    'Cocina'
+    'Cocina',
+    'Sansimonianos'
   ];
 }
 
@@ -244,6 +245,26 @@ document.addEventListener('DOMContentLoaded', () => {
     compassBtn.onclick = (e) => {
       e.stopPropagation();
       openSearchServers();
+    };
+  }
+
+  // Event listeners para los botones de búsqueda
+  const searchChatBtn = document.querySelector('.btn-search-chat');
+  if (searchChatBtn) {
+    searchChatBtn.onclick = () => {
+      alert('🔍 Búsqueda de chats - Pronto disponible');
+    };
+  }
+
+  const searchServersBtn = document.querySelector('.btn-search-servers');
+  if (searchServersBtn) {
+    searchServersBtn.onclick = () => {
+      const modal = document.getElementById('searchServersModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) searchInput.focus();
+      }
     };
   }
 });

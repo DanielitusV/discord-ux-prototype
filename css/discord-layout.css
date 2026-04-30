@@ -378,24 +378,38 @@
   border-right: 1px solid #25272c;
 }
 
-.friend-search {
-  height: 42px;
+.search-buttons {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #111214;
-  border: 1px solid #2b2d31;
-  border-radius: 6px;
-  padding: 0 12px;
+  flex-direction: row;
+  gap: 12px;
   margin-bottom: 22px;
 }
 
-.friend-search input {
-  flex: 1;
-  background: transparent;
-  border: 0;
-  color: #dbdee1;
-  outline: none;
+.search-btn {
+  height: 36px;
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #5865f2;
+  border: 1px solid #5865f2;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0 16px;
+}
+
+.search-btn:hover {
+  background: #4752c4;
+  border-color: #4752c4;
+}
+
+.search-btn:active {
+  transform: scale(0.98);
 }
 
 .friends-list-panel h3 {
