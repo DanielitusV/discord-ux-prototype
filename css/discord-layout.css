@@ -48,6 +48,11 @@
 .server-icon.add,
 .server-icon.compass {
   color: var(--green);
+  font-size: 28px;
+}
+
+.server-icon.compass {
+  line-height: 0.7;
 }
 
 .server-icon.add:hover,

@@ -11,7 +11,7 @@
 <body>
   <main class="app-shell dm-mode">
     <aside class="server-rail" aria-label="Servidores">
-      <button class="server-icon home-icon active" title="Mensajes directos">
+      <button class="server-icon home-icon active" aria-label="Mensajes directos">
         INICIO
       </button>
 
@@ -20,15 +20,15 @@
       <button 
         class="server-icon ux-server" 
         onclick="window.location.href='pages/server-ux.html'"
-        title="Servidor UXploradores">
+        aria-label="Servidor UXploradores">
         UX
       </button>
 
-      <button class="server-icon add" data-open-modal="createServerModal" title="Crear servidor">
+      <button class="server-icon add" data-open-modal="createServerModal" aria-label="Crear servidor">
         +
       </button>
 
-      <button class="server-icon compass" title="Explorar comunidades">
+      <button class="server-icon compass" aria-label="Buscar servidor">
         ⌕
       </button>
     </aside>
