@@ -190,6 +190,15 @@
 
   .hero-panel {
     grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .hero-panel h2 {
+    font-size: 28px;
+  }
+
+  .friends-content {
+    grid-template-columns: 1fr 300px;
   }
 }
 
@@ -788,7 +797,14 @@
 }
 
 @media (max-width: 700px) {
-  .dnd-options { grid-template-columns: 1fr; }
+  .dnd-options {
+    grid-template-columns: 1fr;
+  }
+
+  .friends-content {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
 }
 
 /* ============================================
@@ -1244,6 +1260,15 @@
     font-size: 24px;
   }
 
+  .hero-panel p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
   .modal-card {
     width: 90vw;
     padding: 20px;
@@ -1276,16 +1301,25 @@
   .channel-welcome h2 {
     font-size: 22px;
   }
+
+  .settings-panel {
+    padding: 18px 16px;
+  }
+
+  .switch-row {
+    gap: 12px;
+  }
 }
 
 @media (max-width: 480px) {
   .hero-panel {
-    padding: 16px;
-    gap: 12px;
+    padding: 14px;
+    gap: 10px;
   }
 
   .hero-panel h2 {
     font-size: 18px;
+    margin: 6px 0;
   }
 
   .hero-panel p {
@@ -1294,6 +1328,7 @@
 
   .badge {
     font-size: 10px;
+    padding: 4px 8px;
   }
 
   .modal-card {
@@ -1305,6 +1340,10 @@
     font-size: 16px;
   }
 
+  .modal-card p {
+    font-size: 12px;
+  }
+
   .primary-btn,
   .secondary-btn,
   .join-btn {
@@ -1314,6 +1353,12 @@
 
   .search-box {
     height: 32px;
+    margin: 10px 0;
+  }
+
+  .search-box.large {
+    height: 36px;
+    margin: 8px 0;
   }
 
   .server-item {
@@ -1332,53 +1377,6 @@
 
   .channel-welcome h2 {
     font-size: 18px;
-  }
-
-  .settings-panel {
-    padding: 12px;
-  }
-}
-  }
-
-  .search-box.large {
-    height: 36px;
-    margin: 10px 0;
-  }
-
-  .modal-card {
-    width: min(300px, 90vw);
-    padding: 16px;
-  }
-
-  .modal-card h2 {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-
-  .modal-card p {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-
-  .modal-close {
-    font-size: 22px;
-    top: 10px;
-    right: 10px;
-  }
-
-  .channel-welcome {
-    padding: 16px 16px 6px;
-  }
-
-  .welcome-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .channel-welcome h2 {
-    font-size: 18px;
     margin: 0 0 4px;
   }
 
@@ -1387,9 +1385,8 @@
   }
 
   .settings-panel {
-    padding: 14px;
+    padding: 12px;
     margin-top: 10px;
-    border-radius: 10px;
   }
 
   .settings-panel h3 {
@@ -1406,11 +1403,6 @@
     gap: 12px;
   }
 
-  .server-item {
-    padding: 8px;
-    margin-bottom: 4px;
-  }
-
   .server-item-icon {
     width: 32px;
     height: 32px;
@@ -1424,11 +1416,6 @@
   .server-join-btn {
     padding: 3px 8px;
     font-size: 11px;
-  }
-
-  .servers-empty {
-    padding: 20px 16px;
-    font-size: 12px;
   }
 
   .emoji-picker {
@@ -1505,5 +1492,265 @@
     width: 24px;
     height: 24px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  html,
+  body {
+    min-height: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #17181c;
+  }
+
+  .app-shell,
+  .dm-mode,
+  .friends-content {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .app-shell {
+    min-height: 100dvh;
+    height: auto;
+  }
+
+  .server-rail,
+  .guild-sidebar,
+  .members-panel {
+    display: none !important;
+  }
+
+  .content-area {
+    min-width: 0;
+    width: 100%;
+    min-height: 100dvh;
+    background: linear-gradient(180deg, #2b2d31 0%, #17181c 100%);
+  }
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: auto;
+    min-height: 56px;
+    padding: 12px 14px;
+    gap: 10px;
+    align-items: flex-start;
+    background: rgba(43, 45, 49, 0.96);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .friends-topbar {
+    flex-wrap: wrap;
+  }
+
+  .channel-title {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 800;
+  }
+
+  .top-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .mobile-quicknav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 12px 12px 0;
+  }
+
+  .mobile-quicknav-item {
+    min-height: 38px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #232428;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: #dbdee1;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .mobile-quicknav-item.active {
+    background: #5865f2;
+    border-color: #5865f2;
+    color: #fff;
+  }
+
+  .friends-content {
+    padding: 12px;
+    gap: 12px;
+    height: auto;
+  }
+
+  .friends-list-panel,
+  .activity-panel {
+    min-width: 0;
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #232428;
+    overflow: hidden;
+  }
+
+  .friends-list-panel {
+    padding: 14px;
+    border-right: 0;
+  }
+
+  .search-buttons {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .search-btn {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .friend-row {
+    height: auto;
+    min-height: 56px;
+    padding: 10px 6px;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .friend-row:first-of-type {
+    border-top: 0;
+  }
+
+  .avatar.medium {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    flex: 0 0 auto;
+  }
+
+  .friend-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .friend-info strong {
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
+  .friend-info span {
+    font-size: 12px;
+  }
+
+  .friend-actions {
+    margin-left: 0;
+    flex: 0 0 auto;
+  }
+
+  .friend-actions button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .activity-panel {
+    padding: 14px;
+  }
+
+  .activity-panel h2 {
+    font-size: 18px;
+    margin: 0 0 12px;
+  }
+
+  .activity-card {
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    padding: 10px 12px;
+    min-height: 52px;
+  }
+
+  .channel-title {
+    font-size: 16px;
+  }
+
+  .top-actions {
+    gap: 6px;
+  }
+
+  .icon-button {
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    font-size: 14px;
+  }
+
+  .mobile-quicknav {
+    gap: 6px;
+    padding: 10px 10px 0;
+  }
+
+  .mobile-quicknav-item {
+    min-height: 36px;
+    font-size: 11px;
+  }
+
+  .friends-content {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .friends-list-panel,
+  .activity-panel {
+    border-radius: 16px;
+  }
+
+  .friends-list-panel {
+    padding: 12px;
+  }
+
+  .search-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .search-btn {
+    height: 38px;
+  }
+
+  .friend-row {
+    padding: 10px 4px;
+  }
+
+  .activity-panel {
+    padding: 12px;
+  }
+
+  .activity-panel h2 {
+    font-size: 17px;
   }
 }

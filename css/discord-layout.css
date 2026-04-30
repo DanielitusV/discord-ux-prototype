@@ -418,9 +418,33 @@
   margin-bottom: 10px;
 }
 
+/* Tablet: 769px - 1050px */
+@media (max-width: 1050px) and (min-width: 769px) {
+  .app-shell {
+    grid-template-columns: 72px 200px 1fr;
+  }
+
+  .members-panel {
+    display: none;
+  }
+
+  .guild-sidebar {
+    min-width: 200px;
+  }
+
+  .channel-group h4 {
+    font-size: 10px;
+  }
+
+  .channel {
+    font-size: 14px;
+  }
+}
+
+/* Tablet pequeño: max-width 768px */
 @media (max-width: 768px) {
   .app-shell {
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 56px 160px 1fr;
   }
 
   .guild-sidebar,
@@ -428,47 +452,129 @@
     display: none;
   }
 
+  .dm-mode {
+    grid-template-columns: 56px 1fr;
+  }
+
   .server-icon {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
   }
 
   .icon-button {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+  }
+
+  .top-bar {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .channel-title {
+    font-size: 14px;
+  }
+
+  .top-bar p {
+    font-size: 12px;
+    display: none;
+  }
+
+  .search-buttons {
+    gap: 8px;
   }
 }
 
+/* Móvil: max-width 480px */
 @media (max-width: 480px) {
   .app-shell {
     grid-template-columns: 50px 1fr;
   }
 
+  .dm-mode {
+    grid-template-columns: 50px 1fr;
+  }
+
+  .guild-sidebar {
+    display: none !important;
+  }
+
   .server-icon {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
   }
 
   .server-rail {
-    padding: 8px 0;
+    padding: 6px 0;
+    gap: 8px;
+  }
+
+  .rail-divider {
+    width: 28px;
+    height: 1px;
   }
 
   .top-bar {
-    padding: 10px 12px;
+    padding: 8px 12px;
+    height: 44px;
+    gap: 8px;
+  }
+
+  .channel-title {
+    font-size: 13px;
+  }
+
+  .top-actions {
+    gap: 4px;
   }
 
   .icon-button {
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    font-size: 14px;
+  }
+
+  .discord-home {
+    padding: 16px 12px;
   }
 
   .friends-list-panel {
-    padding: 12px 16px;
+    padding: 10px 12px;
   }
 
   .search-btn {
+    font-size: 11px;
+    padding: 0 10px;
+    height: 32px;
+  }
+
+  .dm-user {
+    padding: 6px;
+  }
+
+  .dm-user strong {
+    font-size: 13px;
+  }
+
+  .dm-user span {
+    font-size: 11px;
+  }
+
+  .user-panel {
+    height: 50px;
+    padding: 6px;
+  }
+
+  .user-meta strong {
     font-size: 12px;
-    padding: 0 12px;
+  }
+
+  .user-meta span {
+    font-size: 10px;
   }
 }
 
@@ -537,7 +643,202 @@
   color: #dbdee1;
 }
 
+.mobile-quicknav {
+  display: none;
+}
+
 .ux-server {
   background: #2b2d31;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell,
+  .dm-mode {
+    height: auto;
+    min-height: 100dvh;
+    grid-template-columns: 1fr;
+  }
+
+  .server-rail,
+  .guild-sidebar {
+    display: none !important;
+  }
+
+  .content-area {
+    min-height: 100dvh;
+    background: linear-gradient(180deg, #232428 0%, #17181c 100%);
+  }
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(43, 45, 49, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .mobile-quicknav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 12px 12px 0;
+  }
+
+  .mobile-quicknav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    border-radius: 999px;
+    background: #232428;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #dbdee1;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .mobile-quicknav-item.active {
+    background: #5865f2;
+    border-color: #5865f2;
+    color: #fff;
+  }
+
+  .friends-content {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .friends-list-panel,
+  .activity-panel {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    background: #232428;
+  }
+
+  .friends-list-panel {
+    padding: 14px;
+    border-right: 0;
+  }
+
+  .activity-panel {
+    padding: 14px;
+  }
+
+  .search-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .search-btn {
+    width: 100%;
+    max-width: none;
+    height: 38px;
+    padding: 0 10px;
+  }
+
+  .friend-row {
+    height: auto;
+    padding: 10px 8px;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .friend-row:first-of-type {
+    border-top: 0;
+  }
+
+  .friend-info strong {
+    font-size: 14px;
+  }
+
+  .friend-info span {
+    font-size: 12px;
+  }
+
+  .friend-actions button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .activity-panel h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .activity-card {
+    margin-bottom: 10px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    height: auto;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .channel-title {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .top-actions {
+    margin-left: 0;
+    margin-top: 2px;
+  }
+
+  .mobile-quicknav {
+    padding: 10px 12px 0;
+    gap: 6px;
+  }
+
+  .mobile-quicknav-item {
+    min-height: 34px;
+    font-size: 11px;
+  }
+
+  .friends-content {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .friends-list-panel,
+  .activity-panel {
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .search-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .friend-row {
+    padding: 10px 4px;
+  }
+
+  .friend-actions {
+    gap: 6px;
+  }
+
+  .friend-actions button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .activity-card {
+    border-radius: 12px;
+  }
 }
