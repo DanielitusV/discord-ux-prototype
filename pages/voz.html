@@ -11,13 +11,13 @@
 <body>
   <main class="app-shell">
     <aside class="server-rail">
-      <button class="server-icon home-icon" onclick="window.location.href='../index.html'" aria-label="Mensajes directos">
-        INICIO
+      <button class="server-icon discord-logo" onclick="window.location.href='../index.html'">
+        Ds
       </button>
       <span class="rail-divider"></span>
-      <button class="server-icon ux-server active" aria-label="Servidor UXploradores">UX</button>
-      <button class="server-icon add" data-open-modal="createServerModal" aria-label="Crear servidor">+</button>
-      <button class="server-icon compass" aria-label="Buscar servidor">⌕</button>
+      <button class="server-icon ux-server active">UX</button>
+      <button class="server-icon add">+</button>
+      <button class="server-icon compass">⌕</button>
     </aside>
 
     <aside class="guild-sidebar">
@@ -37,6 +37,9 @@
         <div class="channel-group">
           <h4>VOICE CHANNELS</h4>
           <a class="channel active" href="voz.html"><span>🔊</span>General</a>
+          <ul id="sidebarConectados" class="sidebar-voice-members hidden">
+            <!-- Se renderizan los conectados al canal desde script.js -->
+          </ul>
         </div>
       </nav>
 
@@ -61,12 +64,55 @@
       <div class="discord-home">
         <section class="hero-panel">
           <div>
-            <span class="badge">Escenario</span>
-            <h2>voz</h2>
-            <p>Vista placeholder para que el integrante encargado implemente este flujo usando los estilos reutilizables.</p>
-            <a class="secondary-btn" href="server-ux.html">Volver</a>
+            <span class="badge">Unirse Canal</span>
+            <h2>Canal de voz · General</h2>
+            <p></p>
+            <div class="hero-actions">
+              <button id="btnEntrarCanal" class="join-btn" style="margin-left:0;">🎙️ Entrar al canal de voz</button>
+              <button id="btnSalirCanal" class="secondary-btn hidden" style="background: var(--danger);">📴 Salir del canal</button>
+              <a class="secondary-btn" href="server-ux.html">Volver</a>
+            </div>
           </div>
         </section>
+
+        <!-- Chat del canal de voz (mensajes simulados) -->
+        <section id="panelChat" class="chat-panel hidden">
+          <header class="chat-panel-header">
+            <strong>💬 Mensajes del canal de voz</strong>
+            <span class="chat-panel-sub">Conversación reciente · #General</span>
+          </header>
+
+          <ul id="listaMensajes" class="chat-messages">
+            <!-- Los mensajes se renderizan desde script.js -->
+          </ul>
+
+          <form id="formMensaje" class="chat-input-row" autocomplete="off">
+            <input
+              id="inputMensaje"
+              class="chat-input"
+              type="text"
+              placeholder="Enviar mensaje a #General"
+              maxlength="200"
+            />
+            <button type="submit" class="chat-send-btn" title="Enviar">➤</button>
+          </form>
+        </section>
+      </div>
+
+      <!-- Toast flotante -->
+      <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+      <!-- Modal de confirmación de ingreso al canal de voz -->
+      <div id="modalVoz" class="modal-backdrop hidden" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalVozTitulo">
+          <button class="modal-close" id="btnCerrarModalVoz" aria-label="Cerrar">×</button>
+          <h2 id="modalVozTitulo">¿Confirmar ingreso al canal de voz?</h2>
+          <p>Estás a punto de unirte al canal <strong>🔊 General</strong>. Tu micrófono se activará al ingresar.</p>
+          <div class="hero-actions" style="justify-content:flex-end;">
+            <button id="btnCancelarVoz" class="secondary-btn">Cancelar</button>
+            <button id="btnConfirmarVoz" class="primary-btn">Entrar</button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -90,27 +136,7 @@
       </div>
     </aside>
   </main>
-
-  <div class="modal-backdrop hidden" id="createServerModal">
-    <div class="modal-card">
-      <button class="modal-close" data-close-modal="createServerModal">×</button>
-      <h2>Crear nuevo servidor</h2>
-      <p>Dale un nombre a tu nuevo servidor</p>
-      <div class="search-box large">
-        <input type="text" id="serverNameInput" placeholder="Mi Servidor" />
-      </div>
-      <button class="primary-btn full" onclick="createServer()">Crear</button>
-    </div>
-  </div>
-
   <script src="../js/main.js"></script>
-
-  <div class="search-servers hidden" id="searchServersModal">
-    <div class="search-servers-card">
-      <h2>Buscar Servidores</h2>
-      <input type="text" id="searchInput" placeholder="Escribe el nombre del servidor..." />
-      <div class="servers-list" id="serversList"></div>
-    </div>
-  </div>
+  <script src="../js/script.js"></script>
 </body>
 </html>
