@@ -16,7 +16,7 @@
       </button>
       <span class="rail-divider"></span>
       <button class="server-icon ux-server active">UX</button>
-      <button class="server-icon add">+</button>
+      <button class="server-icon add" data-open-modal="createServerModal">+</button>
       <button class="server-icon compass">⌕</button>
     </aside>
 
@@ -90,6 +90,19 @@
       </div>
     </aside>
   </main>
+
+  <div class="modal-backdrop hidden" id="createServerModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal="createServerModal">×</button>
+      <h2>Crear nuevo servidor</h2>
+      <p>Dale un nombre a tu nuevo servidor</p>
+      <div class="search-box large">
+        <input type="text" id="serverNameInput" placeholder="Mi Servidor" />
+      </div>
+      <button class="primary-btn full" onclick="createServer()">Crear</button>
+    </div>
+  </div>
+
   <script src="../js/main.js"></script>
 </body>
 </html>

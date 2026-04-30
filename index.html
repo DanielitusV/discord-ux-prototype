@@ -24,7 +24,7 @@
         UX
       </button>
 
-      <button class="server-icon add" data-open-modal="joinServerModal" title="Unirse a servidor">
+      <button class="server-icon add" data-open-modal="createServerModal" title="Crear servidor">
         +
       </button>
 
@@ -178,6 +178,18 @@
       <button class="primary-btn full" data-close-modal="joinServerModal">
         Confirmar unión
       </button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="createServerModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal="createServerModal">×</button>
+      <h2>Crear nuevo servidor</h2>
+      <p>Dale un nombre a tu nuevo servidor</p>
+      <div class="search-box large">
+        <input type="text" id="serverNameInput" placeholder="Mi Servidor" />
+      </div>
+      <button class="primary-btn full" onclick="createServer()">Crear</button>
     </div>
   </div>
 

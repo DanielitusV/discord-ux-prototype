@@ -21,6 +21,7 @@
   background: var(--bg-700);
   color: var(--text);
   font-weight: 800;
+  font-size: 20px;
   display: grid;
   place-items: center;
   transition: 0.16s;

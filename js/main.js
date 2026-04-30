@@ -27,3 +27,23 @@ serverSearch?.addEventListener('input', () => {
     row.style.display = name.includes(value) ? 'flex' : 'none';
   });
 });
+
+function createServer() {
+  const input = document.getElementById('serverNameInput');
+  const serverName = input?.value.trim();
+
+  if (!serverName) {
+    alert('Por favor ingresa un nombre para el servidor');
+    return;
+  }
+
+  // Aquí iría la lógica para crear el servidor
+  console.log('Servidor creado:', serverName);
+
+  // Cerrar el modal
+  const modal = document.getElementById('createServerModal');
+  modal?.classList.add('hidden');
+
+  // Limpiar input
+  if (input) input.value = '';
+}
