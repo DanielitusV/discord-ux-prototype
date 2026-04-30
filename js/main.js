@@ -28,6 +28,42 @@ serverSearch?.addEventListener('input', () => {
   });
 });
 
+// Storage de servidores
+function getServers() {
+  const stored = localStorage.getItem('customServers');
+  return stored ? JSON.parse(stored) : [];
+}
+
+function saveServers(servers) {
+  localStorage.setItem('customServers', JSON.stringify(servers));
+}
+
+function createServerButton(name) {
+  const button = document.createElement('button');
+  button.className = 'server-icon custom-server';
+  button.title = name;
+  button.textContent = name.charAt(0).toUpperCase();
+  return button;
+}
+
+function addServerToRail(name) {
+  const serverRail = document.querySelector('.server-rail');
+  if (!serverRail) return;
+
+  const button = createServerButton(name);
+  const addBtn = serverRail.querySelector('.add');
+  if (addBtn) {
+    addBtn.parentNode.insertBefore(button, addBtn);
+  }
+}
+
+function loadSavedServers() {
+  const servers = getServers();
+  servers.forEach((serverName) => {
+    addServerToRail(serverName);
+  });
+}
+
 function createServer() {
   const input = document.getElementById('serverNameInput');
   const serverName = input?.value.trim();
@@ -37,8 +73,15 @@ function createServer() {
     return;
   }
 
-  // Aquí iría la lógica para crear el servidor
-  console.log('Servidor creado:', serverName);
+  // Guardar en localStorage
+  const servers = getServers();
+  if (!servers.includes(serverName)) {
+    servers.push(serverName);
+    saveServers(servers);
+  }
+
+  // Agregar a la interfaz
+  addServerToRail(serverName);
 
   // Cerrar el modal
   const modal = document.getElementById('createServerModal');
@@ -46,4 +89,9 @@ function createServer() {
 
   // Limpiar input
   if (input) input.value = '';
+
+  console.log('✓ Servidor creado:', serverName);
 }
+
+// Cargar servidores guardados al iniciar
+document.addEventListener('DOMContentLoaded', loadSavedServers);
