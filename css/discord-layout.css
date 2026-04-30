@@ -14,3 +14,14 @@
 .user-panel{height:56px;background:#232428;display:flex;align-items:center;gap:8px;padding:8px}.avatar{border-radius:50%;background:var(--brand);display:grid;place-items:center;font-weight:800}.avatar.small{width:34px;height:34px}.avatar.tiny{width:30px;height:30px}.user-meta{display:flex;flex-direction:column;min-width:0;flex:1}.user-meta strong{font-size:13px}.user-meta span{font-size:11px;color:var(--green)}
 .content-area{display:flex;flex-direction:column;background:var(--bg-700);min-width:0}.top-bar{height:48px;display:flex;align-items:center;gap:14px;padding:0 16px;box-shadow:0 1px 0 rgba(0,0,0,.35);background:var(--bg-700)}.channel-title{font-weight:800;display:flex;gap:8px}.top-bar p{margin:0;color:var(--muted);font-size:13px}.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px}.top-search input{background:var(--bg-900);border:0;color:#fff;border-radius:6px;padding:7px 10px;width:150px}
 .discord-home{padding:24px;overflow:auto}.members-panel{background:#232428;padding:18px 10px;overflow:auto}.members-panel h3{font-size:11px;color:var(--soft);padding:0 8px;margin:10px 0}.member{display:flex;gap:10px;align-items:center;padding:8px;border-radius:8px;color:var(--muted);font-size:14px}.member:hover{background:var(--bg-600);color:#fff}.green-dot{box-shadow:inset -7px -7px 0 -4px var(--green)}
+
+.discord-logo {
+  background: var(--brand);
+  color: #fff;
+  font-weight: 22px;
+}
+
+.discord-logo:hover {
+  border-radius: 16px;
+  background: #4752c4;
+}
