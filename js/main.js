@@ -1,6 +1,8 @@
 document.addEventListener('click', (event) => {
   const openBtn = event.target.closest('[data-open-modal]');
   const closeBtn = event.target.closest('[data-close-modal]');
+  const openMobileServerMenuBtn = event.target.closest('[data-open-mobile-server-menu]');
+  const closeMobileServerMenuBtn = event.target.closest('[data-close-mobile-server-menu]');
 
   if (openBtn) {
     const modal = document.getElementById(openBtn.dataset.openModal);
@@ -12,8 +14,89 @@ document.addEventListener('click', (event) => {
     modal?.classList.add('hidden');
   }
 
+  if (openMobileServerMenuBtn) {
+    event.preventDefault();
+    openMobileServerMenu();
+  }
+
+  if (closeMobileServerMenuBtn || event.target.classList.contains('mobile-server-menu-backdrop')) {
+    closeMobileServerMenu();
+  }
+
   if (event.target.classList.contains('modal-backdrop')) {
     event.target.classList.add('hidden');
+  }
+});
+
+function openMobileServerMenu() {
+  const menu = document.getElementById('mobileServerMenu');
+  if (!menu) return;
+
+  populateMobileServerMenu();
+
+  menu.classList.remove('hidden');
+  document.body.classList.add('mobile-menu-open');
+
+  const trigger = document.querySelector('[data-open-mobile-server-menu]');
+  trigger?.setAttribute('aria-expanded', 'true');
+  menu.setAttribute('aria-hidden', 'false');
+}
+
+function closeMobileServerMenu() {
+  const menu = document.getElementById('mobileServerMenu');
+  if (!menu) return;
+
+  menu.classList.add('hidden');
+  document.body.classList.remove('mobile-menu-open');
+
+  const trigger = document.querySelector('[data-open-mobile-server-menu]');
+  trigger?.setAttribute('aria-expanded', 'false');
+  menu.setAttribute('aria-hidden', 'true');
+}
+
+function populateMobileServerMenu() {
+  const list = document.getElementById('mobileServerMenuList');
+  if (!list) return;
+
+  const servers = [
+    { name: 'UXploradores', href: 'pages/server-ux.html', isDefault: true },
+    ...getServers().map((name) => ({
+      name,
+      href: `pages/custom-server.html?name=${encodeURIComponent(name)}`,
+      isDefault: false,
+    })),
+  ];
+
+  list.innerHTML = '';
+
+  if (servers.length === 0) {
+    list.innerHTML = '<div class="mobile-server-empty">No hay servidores aún.</div>';
+    return;
+  }
+
+  const currentPath = window.location.pathname;
+  const currentName = new URLSearchParams(window.location.search).get('name') || '';
+
+  servers.forEach((server) => {
+    const link = document.createElement('a');
+    link.className = 'mobile-server-link';
+    const isActive = server.isDefault
+      ? currentPath.endsWith('/server-ux.html') || currentPath.endsWith('/server-ux')
+      : currentPath.includes('/custom-server.html') && currentName === server.name;
+
+    if (isActive) {
+      link.classList.add('active');
+    }
+
+    link.href = server.href;
+    link.textContent = server.name;
+    list.appendChild(link);
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeMobileServerMenu();
   }
 });
 

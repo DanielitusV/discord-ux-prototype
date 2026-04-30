@@ -90,18 +90,27 @@
         <div class="channel-title">
           Mensajes directos
         </div>
-
-        <div class="top-actions">
-          <button class="icon-button">💬</button>
-          <button class="icon-button">?</button>
-        </div>
       </header>
 
       <nav class="mobile-quicknav" aria-label="Accesos rápidos">
         <a class="mobile-quicknav-item active" href="#directs">Chats</a>
-        <a class="mobile-quicknav-item" href="pages/server-ux.html">Servidores</a>
-        <a class="mobile-quicknav-item" href="#activity">Actividad</a>
+        <button class="mobile-quicknav-item" type="button" data-open-mobile-server-menu aria-controls="mobileServerMenu" aria-expanded="false">Servidores</button>
       </nav>
+
+      <div class="mobile-server-menu hidden" id="mobileServerMenu" aria-hidden="true">
+        <div class="mobile-server-menu-backdrop" data-close-mobile-server-menu></div>
+        <aside class="mobile-server-menu-panel" role="dialog" aria-label="Menú de servidores">
+          <div class="mobile-server-menu-header">
+            <div>
+              <span class="mobile-server-menu-kicker">Menú</span>
+              <h2>Servidores</h2>
+            </div>
+            <button class="mobile-server-menu-close" type="button" data-close-mobile-server-menu aria-label="Cerrar menú">×</button>
+          </div>
+
+          <div class="mobile-server-list" id="mobileServerMenuList" aria-label="Lista de servidores"></div>
+        </aside>
+      </div>
 
     <main class="friends-content">
       <section class="friends-list-panel" id="directs">
