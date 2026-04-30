@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servidor Personalizado</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/discord-layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="server-rail">
+      <button class="server-icon home-icon" onclick="window.location.href='../index.html'" title="Mensajes directos">
+        INICIO
+      </button>
+
+      <span class="rail-divider"></span>
+
+      <button class="server-icon ux-server" onclick="window.location.href='server-ux.html'">UX</button>
+      <button class="server-icon add" data-open-modal="createServerModal">+</button>
+      <button class="server-icon compass">⌕</button>
+    </aside>
+
+    <aside class="guild-sidebar">
+      <header class="guild-header">
+        <h1 id="serverName">Servidor</h1>
+      </header>
+
+      <nav class="channel-list">
+        <div class="channel-group">
+          <h4>TEXT CHANNELS</h4>
+          <a class="channel active" href="#"><span>#</span>general</a>
+        </div>
+        
+        <div class="channel-group">
+          <h4>VOICE CHANNELS</h4>
+          <a class="channel" href="#"><span>🔊</span>General</a>
+        </div>
+      </nav>
+
+      <footer class="user-panel">
+        <div class="avatar small online">D</div>
+        <div class="user-meta">
+          <strong>Invitado</strong>
+          <span>En línea</span>
+        </div>
+      </footer>
+    </aside>
+
+    <section class="content-area">
+      <header class="top-bar">
+        <div class="channel-title"><span>#</span>general</div>
+        <div class="top-actions">
+          <button class="icon-button" onclick="deleteCurrentServer()">🗑️</button>
+        </div>
+      </header>
+
+      <div class="discord-home">
+        <section class="hero-panel">
+          <div>
+            <span class="badge">Servidor Personalizado</span>
+            <h2 id="heroName">Mi Servidor</h2>
+            <p>Servidor creado. Disfruta de tu espacio personalizado.</p>
+            <button class="secondary-btn">Ver más</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <aside class="members-panel">
+      <h3>ONLINE — 1</h3>
+      <div class="member">
+        <div class="avatar tiny online">D</div>
+        <span>Invitado</span>
+      </div>
+    </aside>
+  </main>
+
+  <div class="modal-backdrop hidden" id="createServerModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal="createServerModal">×</button>
+      <h2>Crear nuevo servidor</h2>
+      <p>Dale un nombre a tu nuevo servidor</p>
+      <div class="search-box large">
+        <input type="text" id="serverNameInput" placeholder="Mi Servidor" />
+      </div>
+      <button class="primary-btn full" onclick="createServer()">Crear</button>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function getServerName() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('name');
+    }
+
+    function deleteCurrentServer() {
+      const serverName = getServerName();
+      if (!serverName) return;
+
+      if (confirm(`¿Eliminar servidor "${serverName}"?`)) {
+        deleteServer(serverName);
+        window.location.href = '../index.html';
+      }
+    }
+
+    function initServer() {
+      const serverName = getServerName();
+      if (serverName) {
+        document.getElementById('serverName').textContent = serverName;
+        document.getElementById('heroName').textContent = serverName;
+        document.title = `Servidor: ${serverName}`;
+      }
+    }
+
+    initServer();
+  </script>
+</body>
+</html>

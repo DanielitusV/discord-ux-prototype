@@ -43,7 +43,28 @@ function createServerButton(name) {
   button.className = 'server-icon custom-server';
   button.title = name;
   button.textContent = name.charAt(0).toUpperCase();
+  button.onclick = (e) => {
+    e.stopPropagation();
+    const path = window.location.pathname;
+    const isInPages = path.includes('/pages/');
+    const url = isInPages 
+      ? `custom-server.html?name=${encodeURIComponent(name)}`
+      : `pages/custom-server.html?name=${encodeURIComponent(name)}`;
+    window.location.href = url;
+  };
   return button;
+}
+
+function deleteServer(name) {
+  const servers = getServers();
+  const updated = servers.filter(s => s !== name);
+  saveServers(updated);
+  
+  const rail = document.querySelector('.server-rail');
+  const buttons = Array.from(rail.querySelectorAll('.custom-server'));
+  buttons.forEach(btn => {
+    if (btn.title === name) btn.remove();
+  });
 }
 
 function addServerToRail(name) {
