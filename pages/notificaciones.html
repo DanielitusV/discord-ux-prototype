@@ -10,10 +10,85 @@
 </head>
 <body>
   <main class="app-shell">
-    <aside class="server-rail"><a class="server-icon active" href="../index.html">UX</a><span class="rail-divider"></span><a class="server-icon add" href="../index.html">+</a></aside>
-    <aside class="guild-sidebar"><header class="guild-header"><h1>UXploradores</h1></header><nav class="channel-list"><a class="channel" href="../index.html"><span>#</span>inicio</a><a class="channel" href="mensajes.html"><span>#</span>mensajes-directos</a><a class="channel" href="voz.html"><span>🔊</span>voz</a><a class="channel" href="notificaciones.html"><span>#</span>notificaciones</a><a class="channel" href="verificacion.html"><span>#</span>verificacion</a></nav></aside>
-    <section class="content-area"><header class="top-bar"><div class="channel-title"><span>#</span>notificaciones</div></header><div class="discord-home"><section class="hero-panel"><div><span class="badge">Escenario</span><h2>notificaciones</h2><p>Vista placeholder para que el integrante encargado implemente este flujo usando los estilos reutilizables.</p><a class="secondary-btn" href="../index.html">Volver al inicio</a></div></section></div></section>
-    <aside class="members-panel"><h3>ONLINE — 4</h3><div class="member"><div class="avatar tiny green-dot">D</div><span>Daniel</span></div></aside>
+    <aside class="server-rail">
+      <button class="server-icon discord-logo" onclick="window.location.href='../index.html'">
+        Ds
+      </button>
+      <span class="rail-divider"></span>
+      <button class="server-icon ux-server active">UX</button>
+      <button class="server-icon add">+</button>
+      <button class="server-icon compass">⌕</button>
+    </aside>
+
+    <aside class="guild-sidebar">
+      <header class="guild-header">
+        <h1>UXploradores</h1>
+      </header>
+
+      <nav class="channel-list">
+        <div class="channel-group">
+          <h4>TEXT CHANNELS</h4>
+          <a class="channel" href="server-ux.html"><span>#</span>inicio</a>
+          <a class="channel" href="verificacion.html"><span>#</span>verificacion</a>
+          <a class="channel active" href="notificaciones.html"><span>#</span>notificaciones</a>
+          <a class="channel" href="mensajes.html"><span>#</span>mensajes</a>
+        </div>
+        
+        <div class="channel-group">
+          <h4>VOICE CHANNELS</h4>
+          <a class="channel" href="voz.html"><span>🔊</span>General</a>
+        </div>
+      </nav>
+
+      <footer class="user-panel">
+        <div class="avatar small online">D</div>
+        <div class="user-meta">
+          <strong>Invitado</strong>
+          <span>En línea</span>
+        </div>
+      </footer>
+    </aside>
+
+    <section class="content-area">
+      <header class="top-bar">
+        <div class="channel-title"><span>#</span>notificaciones</div>
+        <div class="top-actions">
+          <button class="icon-button">📌</button>
+          <button class="icon-button">?</button>
+        </div>
+      </header>
+
+      <div class="discord-home">
+        <section class="hero-panel">
+          <div>
+            <span class="badge">Escenario</span>
+            <h2>notificaciones</h2>
+            <p>Vista placeholder para que el integrante encargado implemente este flujo usando los estilos reutilizables.</p>
+            <a class="secondary-btn" href="server-ux.html">Volver</a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <aside class="members-panel">
+      <h3>ONLINE — 4</h3>
+      <div class="member">
+        <div class="avatar tiny online">L</div>
+        <span>Luis Fernando</span>
+      </div>
+      <div class="member">
+        <div class="avatar tiny online">J</div>
+        <span>Jonas</span>
+      </div>
+      <div class="member">
+        <div class="avatar tiny idle">M</div>
+        <span>Mairon Henry</span>
+      </div>
+      <div class="member">
+        <div class="avatar tiny green-dot">D</div>
+        <span>Danielitus</span>
+      </div>
+    </aside>
   </main>
   <script src="../js/main.js"></script>
 </body>

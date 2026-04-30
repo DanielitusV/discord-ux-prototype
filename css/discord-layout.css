@@ -104,6 +104,19 @@
   flex: 1;
 }
 
+.channel-group {
+  margin: 16px 8px 4px;
+}
+
+.channel-group h4 {
+  font-size: 11px;
+  color: var(--soft);
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.08em;
+}
+
 .channel {
   display: flex;
   gap: 8px;
@@ -115,6 +128,10 @@
   font-size: 15px;
   transition: 0.16s;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
 }
 
 .channel:hover,

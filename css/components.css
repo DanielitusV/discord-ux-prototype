@@ -53,8 +53,15 @@
   font-weight: 800;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
 .primary-btn,
-.secondary-btn {
+.secondary-btn,
+.join-btn {
   border-radius: 10px;
   padding: 10px 14px;
   font-weight: 800;
@@ -72,6 +79,12 @@
 .secondary-btn {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
+}
+
+.join-btn {
+  background: var(--green);
+  color: #fff;
+  margin-left: auto;
 }
 
 .modal-backdrop {

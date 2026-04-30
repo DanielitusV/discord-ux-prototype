@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servidor UX</title>
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/discord-layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+<body>
+  <main class="app-shell">
+    <aside class="server-rail">
+      <button class="server-icon discord-logo" onclick="window.location.href='../index.html'">
+        Ds
+      </button>
+
+      <span class="rail-divider"></span>
+
+      <button class="server-icon ux-server active">
+        UX
+      </button>
+
+      <button class="server-icon add">+</button>
+      <button class="server-icon compass">⌕</button>
+    </aside>
+    <aside class="guild-sidebar">
+      <header class="guild-header">
+        UXploradores
+      </header>
+
+      <nav class="channel-list">
+        <div class="channel-group">
+          <h4>TEXT CHANNELS</h4>
+          <a class="channel active" href="server-ux.html"><span>#</span>inicio</a>
+          <a class="channel" href="verificacion.html"><span>#</span>verificacion</a>
+          <a class="channel" href="notificaciones.html"><span>#</span>notificaciones</a>
+          <a class="channel" href="mensajes.html"><span>#</span>mensajes</a>
+        </div>
+        
+        <div class="channel-group">
+          <h4>VOICE CHANNELS</h4>
+          <a class="channel" href="voz.html"><span>🔊</span>General</a>
+        </div>
+      </nav>
+
+      <footer class="user-panel">
+        <div class="avatar small online">D</div>
+        <div class="user-meta">
+          <strong>Invitado</strong>
+          <span>En línea</span>
+        </div>
+      </footer>
+    </aside>
+    <section class="content-area">
+      <header class="top-bar">
+        <div class="channel-title"><span>#</span>inicio</div>
+        <div class="top-actions">
+          <button class="icon-button">📌</button>
+          <button class="icon-button">?</button>
+        </div>
+      </header>
+
+      <div class="discord-home">
+        <section class="hero-panel">
+          <div>
+            <span class="badge">Servidor</span>
+            <h2>UXploradores</h2>
+            <p>Comunidad dedicada a mejoras de usabilidad en Discord. Aquí exploramos nuevas formas de interactuar con la plataforma de manera más eficiente y centrada en el usuario.</p>
+            <button class="secondary-btn">Ver más</button>
+          </div>
+        </section>
+
+        <div style="margin-top: 20px;">
+          <h3 style="color: var(--text); font-size: 16px; margin-bottom: 12px;">Canales destacados</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="background: var(--bg-800); padding: 12px; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; transition: 0.16s;" onclick="this.style.background='var(--bg-700)'" onmouseout="this.style.background='var(--bg-800)'">
+              <strong style="color: var(--text);">📋 verificacion</strong>
+              <p style="color: var(--muted); font-size: 13px; margin: 6px 0 0 0;">Reglas y verificación del servidor</p>
+            </div>
+            
+            <div style="background: var(--bg-800); padding: 12px; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; transition: 0.16s;" onclick="this.style.background='var(--bg-700)'" onmouseout="this.style.background='var(--bg-800)'">
+              <strong style="color: var(--text);">🔔 notificaciones</strong>
+              <p style="color: var(--muted); font-size: 13px; margin: 6px 0 0 0;">Configuración centralizada de notificaciones</p>
+            </div>
+            
+            <div style="background: var(--bg-800); padding: 12px; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; transition: 0.16s;" onclick="this.style.background='var(--bg-700)'" onmouseout="this.style.background='var(--bg-800)'">
+              <strong style="color: var(--text);">💬 mensajes</strong>
+              <p style="color: var(--muted); font-size: 13px; margin: 6px 0 0 0;">Sistema de mensajes con feedback en tiempo real</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; padding: 16px; background: var(--bg-800); border-radius: 12px; border-left: 4px solid var(--brand);">
+          <p style="color: var(--muted); margin: 0; font-size: 13px;">
+            💡 <strong style="color: var(--text);">Consejo:</strong> Explora los canales de voz para encontrar conversaciones en tiempo real sobre mejoras de UX.
+          </p>
+        </div>
+      </div>
+    </section>
+    <aside class="members-panel">
+    <h3>ONLINE — 4</h3>
+    <div class="member">
+      <div class="avatar tiny online">L</div>
+      <span>Luis Fernando</span>
+    </div>
+    <div class="member">
+      <div class="avatar tiny online">J</div>
+      <span>Jonas</span>
+    </div>
+    <div class="member">
+      <div class="avatar tiny idle">M</div>
+      <span>Mairon Henry</span>
+    </div>
+    <div class="member">
+      <div class="avatar tiny green-dot">D</div>
+      <span>Danielitus</span>
+    </div>
+  </aside>
+  </main>
+</body>
+</html>
